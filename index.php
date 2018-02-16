@@ -71,63 +71,15 @@
 <!--#####################################################################################-->
 <!--                             Navbar                                                  -->
 <!--#####################################################################################-->
-
-<!-- A grey horizontal navbar that becomes vertical on small screens -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
-
-     <!-- navbar links when signed in -->
-      <ul class="navbar-nav mr-auto">
-        <?php if(isset($_SESSION['user'])) { ?> 
-
-          <li class="nav-item">
-            <a class="nav-link" href="home.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contactus.php">Kontakt</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="account.php">Hi, 
-              <?php echo ucwords($userRow['first_name']); ?> (Account) - <i class="fas fa-shopping-cart"></i> <?php echo $borrowedRows;  ?>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="logout.php?logout">Sign Out</a>
-          </li>
-        
-
-        <!-- navbar links when signed out -->
-
-        <?php } else { ?>    
-
-          <li class="nav-item">
-            <a class="nav-link" href="home.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="aboutus.php">Kontakt</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register.php">Register</a>
-          </li>
-        
-        <?php } ?>
-        
-      </ul>
-</nav>  
+<?php include('navbar.php'); ?>
 
 
 <!--#####################################################################################-->
 <!--                             Main Container                                          -->
 <!--#####################################################################################-->
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 4.5em">
 
-  <!-- FORM LOG IN ============================ -->
+  
 
     <div class="container col-lg-4 col-md-10 col-sm-10 m-auto my-auto">
 
@@ -141,7 +93,7 @@
       ?>
 
       <form class="form-control" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-        <h3>Login</h3>
+        <h2>Log In.</h2>
         <hr />
         <?php
           if ( isset($errMSG) ) {
@@ -156,22 +108,25 @@
         ?>
         
         <div class="form-group">
-          <input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>" maxlength="40" />
+          <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
           <span class="text-danger"><?php echo $emailError; ?></span>
         </div>
         <div class="form-group">
-          <input type="password" name="pass" class="form-control" placeholder="Password" maxlength="15" />
+          <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
           <span class="text-danger"><?php echo $passError; ?></span>
         </div>
         
         <hr />
-        <button class="btn btn-block btn-primary col-8 m-auto" type="submit" name="btn-login">Einloggen</button>
+        <button class="btn btn-block btn-primary col-8 m-auto" type="submit" name="btn-login">Log In</button>
         <hr />
-        <a href="register.php">Erstellen Sie einen neuen Account...</a>
+        <a href="register.php">New to site? Create an account here...</a>
       </form>
-    </div>             
+    </div>
 
-</div><!-- Endof Container fluid -->
+</div><!-- Endof Container fluid -->    
+
+
+
 
 </body>
 </html>

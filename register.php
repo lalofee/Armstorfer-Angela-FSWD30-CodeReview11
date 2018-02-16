@@ -107,7 +107,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Landing Page</title>
+  <title>Registration</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -122,64 +122,15 @@
 <!--#####################################################################################-->
 <!--                             Navbar                                                  -->
 <!--#####################################################################################-->
+<?php include('navbar.php'); ?>
 
-<!-- A grey horizontal navbar that becomes vertical on small screens -->
-<nav class="navbar navbar-expand-sm bg-dark ">
 
-       <!-- navbar links when signed in -->
-      <ul class="navbar-nav mr-auto">
-        <?php if(isset($_SESSION['user'])) { ?> 
-
-          <li class="nav-item">
-            <a class="nav-link" href="home.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contactus.php">Kontakt</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="account.php">Hi, 
-              <?php echo ucwords($userRow['first_name']); ?> (Account) - <i class="fas fa-shopping-cart"></i> <?php echo $borrowedRows;  ?>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="logout.php?logout">Sign Out</a>
-          </li>
-        
-
-        <!-- navbar links when signed out -->
-
-        <?php } else { ?>    
-
-          <li class="nav-item">
-            <a class="nav-link" href="home.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="aboutus.php">Kontakt</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register.php">Register</a>
-          </li>
-        
-        <?php } ?>
-        
-      </ul>
-</nav> 
 
 <!--#####################################################################################-->
 <!--                             Main Container                                          -->
 <!--#####################################################################################-->
-<div class="container-fluid">
-
-  <!-- FORM LOG IN ============================ -->
-
-    <div class="container col-lg-4 col-md-10 col-sm-10 m-auto my-auto">
+<div class="container-fluid" style="margin-top: 4.5em">
+  <div class="container col-lg-6 col-m-8 col-sm-10 col-xs-12">
 
     <form class="form-control" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
       <h2>Registration</h2>
@@ -222,10 +173,13 @@
 
       <button type="submit" class="btn btn-block btn-primary col-8 m-auto" name="btn-signup" onclick="AlertIt()">Register</button>
       <hr />
-      <a href="index.php">Log In...</a>
+      <a href="index.php">To Log In, press here...</a>
     </form>
   </div>
-    </div>             
+
+
+
+  
 
 </div><!-- Endof Container fluid -->
 
