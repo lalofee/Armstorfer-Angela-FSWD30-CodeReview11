@@ -59,7 +59,7 @@
         
 <?php
 
-$sql = "SELECT location.name, location.street, location.PLZ
+$sql = "SELECT location.location_name, location.street, location.PLZ
         FROM location";
     
 $result = mysqli_query($conn, $sql);
@@ -85,7 +85,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
     "<tbody>
       <tr>
-        <td>" . $row["name"] . "</td>        
+        <td>" . $row["location_name"] . "</td>        
         <td>" . $row["street"] . "</td>
         <td>" . $row["PLZ"] . "</td>        
       </tr>";

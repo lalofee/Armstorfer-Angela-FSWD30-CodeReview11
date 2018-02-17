@@ -60,8 +60,9 @@
 
 <?php
 
-$sql = "SELECT cars.carId, cars.name, cars.color, cars.ps
-        FROM cars";
+$sql = "SELECT * FROM cars
+        INNER JOIN location ON
+        fk_locationId = locationId";
     
 $result = mysqli_query($conn, $sql);
 
@@ -73,9 +74,13 @@ echo
   <thead>
     <tr>      
       <th scope='col'>Car Number</th>
+
       <th scope='col'>Brand</th>
       <th scope='col'>Color</th>
       <th scope='col'>PS</th>
+      <th scope='col'>Office</th>
+      <th scope='col'>Adress</th>
+      <th scope='col'>District</th>
     </tr>
   </thead>";
   
@@ -87,9 +92,12 @@ while($row = mysqli_fetch_assoc($result)) {
     "<tbody>
       <tr>
         <td>" . $row["carId"] . "</td>        
-        <td>" . $row["name"] . "</td>
+        <td>" . $row["car_name"] . "</td>
         <td>" . $row["color"] . "</td>
-        <td>" . $row["ps"] . "</td>        
+        <td>" . $row["ps"] . "</td>
+        <td>" . $row["location_name"] . "</td>
+        <td>" . $row["street"] . "</td>
+        <td>" . $row["PLZ"] . "</td>        
       </tr>";
 }
 

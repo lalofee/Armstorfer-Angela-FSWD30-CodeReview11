@@ -60,7 +60,7 @@
 
 <?php
 
-$sql = "SELECT cars.carId, cars.name, cars.color, cars.ps
+$sql = "SELECT cars.carId, cars.car_name, cars.color, cars.ps
         FROM cars";
     
 $result = mysqli_query($conn, $sql);
@@ -87,7 +87,7 @@ while($row = mysqli_fetch_assoc($result)) {
     "<tbody>
       <tr>
         <td>" . $row["carId"] . "</td>        
-        <td>" . $row["name"] . "</td>
+        <td>" . $row["car_name"] . "</td>
         <td>" . $row["color"] . "</td>
         <td>" . $row["ps"] . "</td>        
       </tr>";
