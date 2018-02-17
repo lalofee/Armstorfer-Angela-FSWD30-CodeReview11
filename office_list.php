@@ -1,8 +1,36 @@
+<?php
+
+ ob_start();
+
+ session_start();
+
+ require_once 'dbconnect.php';
+
+ 
+
+ // if session is not set this will redirect to login page
+
+ if( !isset($_SESSION['users']) ) {
+
+  header("Location: index.php");
+
+  exit;
+
+ }
+
+ // select logged-in users detail
+
+ $res=mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['user']);
+
+ $userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Offices</title>
+  <title>location</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -28,41 +56,49 @@
 <div class="container-fluid" style="margin-top: 4.5em">
 	<div class="row">
         
+<?php
+
+$sql = "SELECT location.name, location.street, location.PLZ
+        FROM location";
+    
+$result = mysqli_query($conn, $sql);
 
 
-<!-- Table -->
-<div class="col">
-<table class="table">
+echo
+
+"<div class='col'>
+<table class='table'>
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      
+      <th scope='col'>Name</th>
+      <th scope='col'>Adress</th>
+      <th scope='col'>District</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-</div><!-- endof Table -->
+  </thead>";
+  
+// fetch a next row (as long as there are some) into $row
+while($row = mysqli_fetch_assoc($result)) {
+
+  echo
+
+    "<tbody>
+      <tr>
+        <td>" . $row["name"] . "</td>        
+        <td>" . $row["street"] . "</td>
+        <td>" . $row["PLZ"] . "</td>        
+      </tr>";
+}
+
+echo "</tbody></table></div>";
+
+// Free result set
+mysqli_free_result($result);
+// Close connection
+mysqli_close($conn);
+
+?>
+
 
 </div> <!-- endof row -->
 </div><!-- endof Container fluid -->

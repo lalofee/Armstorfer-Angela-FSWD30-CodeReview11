@@ -83,7 +83,7 @@
     // if there's no error, continue to signup
     if( !$error ) {
       $query = "
-      INSERT INTO users(first_name, last_name, email, password) 
+      INSERT INTO user(first_name, last_name, email, password) 
       VALUES('$name', '$last_name', '$email','$password')
       ";
 
@@ -130,6 +130,13 @@
 <!--                             Main Container                                          -->
 <!--#####################################################################################-->
 <div class="container-fluid" style="margin-top: 4.5em">
+
+<div class="jumbotron text-center">
+    <h1>Car Rental Company</h1> 
+    <p>rent your car!</p> 
+  </div>
+
+  
   <div class="container col-lg-6 col-m-8 col-sm-10 col-xs-12">
 
     <form class="form-control" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
