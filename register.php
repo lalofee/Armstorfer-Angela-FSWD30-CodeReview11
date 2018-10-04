@@ -5,7 +5,7 @@
 
  session_start(); // start a new session or continues the previous
 
- if( isset($_SESSION['user'])!="" ){
+ if( isset($_SESSION['users'])!="" ){
 
   header("Location: home.php"); // redirects to home.php
 
@@ -155,19 +155,9 @@
     $errMSG = "Something went wrong, try again later...";
 
    }
-
-   
-
-  }
-
- 
-
- 
-
  }
-
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -194,11 +184,10 @@
 <!--#####################################################################################-->
 <!--                             Main Container                                          -->
 <!--#####################################################################################-->
-<div class="container-fluid" style="margin-top: 4.5em">
+<div class="container" style="margin-top: 4.5em">
 
 <div class="jumbotron text-center">
-    <h1>Car Rental Company</h1> 
-    <p>rent your car!</p> 
+     <h1 class="float-right">Car Rental Company</h1>  
   </div>
 
   
@@ -255,7 +244,7 @@
 
 </div><!-- Endof Container fluid -->
 
-</body>
-</html>
+<!-- footer + </body-html> -->
+<?php include('footer.php'); ?>
 
-<?php ob_end_flush(); ?>
+<?php ob_end_flush(); ?> 

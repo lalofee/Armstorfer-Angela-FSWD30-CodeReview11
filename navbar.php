@@ -1,8 +1,4 @@
-
-
-
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
   
     <a class="navbar-brand" href="<?php echo URLROOT; ?>"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,13 +16,13 @@
             <a class="nav-link" href="home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contactus.php">Kontakt</a>
+            <a class="nav-link" href="contactus.php">Contact</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="account.php">Hi, 
-              <?php echo ucwords($userRow['first_name']); ?> (Account) - <i class="fas fa-shopping-cart"></i> <?php echo $borrowedRows;  ?>
+              <?php echo ucwords($userRow['userName']); ?> 
             </a>
           </li>
           <li class="nav-item">
@@ -42,7 +38,7 @@
             <a class="nav-link" href="home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="aboutus.php">Contact Us</a>
+            <a class="nav-link" href="contactus.php">Contact</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">

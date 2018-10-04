@@ -11,7 +11,7 @@
 
  // it will never let you open index(login) page if session is set
 
- if ( isset($_SESSION['user'])!="" ) {
+ if ( isset($_SESSION['users'])!="" ) {
 
   header("Location: home.php");
 
@@ -95,7 +95,7 @@
 
    if( $count == 1 && $row['userPass']==$password ) {
 
-    $_SESSION['user'] = $row['userId'];
+    $_SESSION['users'] = $row['userId'];
 
     header("Location: home.php");
 
@@ -126,7 +126,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="style.css" rel="stylesheet" >
 
 </head>
 <body>
@@ -140,13 +140,12 @@
 <!--#####################################################################################-->
 <!--                             Main Container                                          -->
 <!--#####################################################################################-->
-<div class="container-fluid" style="margin-top: 4.5em">
+<div class="container" style="margin-top: 4.5em">
 
 
 
   <div class="jumbotron text-center">
-    <h1>Car Rental Company</h1> 
-    <p>rent your car!</p> 
+     <h1 class="float-right">Car Rental Company</h1>  
   </div>
   
 
@@ -192,12 +191,12 @@
       </form>
     </div>
 
-</div><!-- Endof Container fluid -->    
+</div><!-- Endof Container -->    
 
 
 
 
-</body>
-</html>
+<!-- footer + </body-html> -->
+<?php include('footer.php'); ?>
 
-<?php ob_end_flush(); ?>
+<?php ob_end_flush(); ?> 

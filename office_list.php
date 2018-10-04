@@ -11,7 +11,7 @@
 
  // if session is not set this will redirect to login page
 
- if( !isset($_SESSION['user']) ) {
+ if( !isset($_SESSION['users']) ) {
 
   header("Location: index.php");
 
@@ -21,7 +21,7 @@
 
  // select logged-in users detail
 
- $res=mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['user']);
+ $res=mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['users']);
 
  $userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
 
@@ -54,7 +54,7 @@
 <!--#####################################################################################-->
 <!--                             Main Container                                          -->
 <!--#####################################################################################-->
-<div class="container-fluid" style="margin-top: 4.5em">
+<div class="container" style="margin-top: 4.5em">
 	<div class="row">
         
 <?php
@@ -104,7 +104,7 @@ mysqli_close($conn);
 </div> <!-- endof row -->
 </div><!-- endof Container fluid -->
 
-</body>
-</html>
+<!-- footer + </body-html> -->
+<?php include('footer.php'); ?>
 
-<?php ob_end_flush(); ?>
+<?php ob_end_flush(); ?> 

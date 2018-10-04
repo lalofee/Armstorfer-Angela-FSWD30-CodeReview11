@@ -11,7 +11,7 @@
 
  // if session is not set this will redirect to login page
 
- if( !isset($_SESSION['user']) ) {
+ if( !isset($_SESSION['users']) ) {
 
   header("Location: index.php");
 
@@ -21,7 +21,7 @@
 
  // select logged-in users detail
 
- $res=mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['user']);
+ $res=mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['users']);
 
  $userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
 
@@ -38,8 +38,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -53,19 +52,18 @@
 <!--#####################################################################################-->
 <!--                             Main Container                                          -->
 <!--#####################################################################################-->
-<div class="container-fluid" style="margin-top: 4.5em">
+<div class="container" style="margin-top: 4.5em">
 	
         
-  <div class="jumbotron text-center">
-    <h1>Find the next car rental office here</h1> 
-    <p></p> 
+  <div class="jumbotron">
+    <h1 class="float-right">Car Rental Company</h1>  
   </div>
 
 
 <div class="row">
   
-<div class="col">
-  <div class="card" style="width:400px">
+<div class="col-md-4">
+  <div class="card" style="width:100%">
   <img class="card-img-top" src="img/office.jpg" alt="Card image">
   <div class="card-body">
     <h4 class="card-title">Offices</h4>
@@ -75,8 +73,8 @@
 </div>
 </div>
 
-<div class="col">
-  <div class="card" style="width:400px">
+<div class="col-md-4">
+  <div class="card" style="width:100%">
   <img class="card-img-top" src="img/cars.jpg" alt="Card image">
   <div class="card-body">
     <h4 class="card-title">Cars</h4>
@@ -86,8 +84,8 @@
 </div>
 </div>
 
-<div class="col">
-  <div class="card" style="width:400px">
+<div class="col-md-4">
+  <div class="card" style="width:100%">
   <img class="card-img-top" src="img/street.jpg" alt="Card image">
   <div class="card-body">
     <h4 class="card-title">rent!</h4>
@@ -103,8 +101,10 @@
 </div><!-- endof row -->
 
 
-</div><!-- endof Container fluid -->
+</div><!-- endof Container -->
 
-</body>
-</html>
+<!-- footer + </body-html> -->
+<?php include('footer.php'); ?>
+
+<?php ob_end_flush(); ?> 
 
